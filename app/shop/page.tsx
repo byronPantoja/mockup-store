@@ -34,10 +34,12 @@ export default async function ShopPage({
     image: prod.images.edges[0]?.node?.url || "",
   }));
 
-  const filters = collectionsData.map((c: any) => ({
-    title: c.title,
-    handle: c.handle,
-  }));
+  const filters = collectionsData
+    .filter((c: any) => c.handle !== "frontpage")
+    .map((c: any) => ({
+      title: c.title,
+      handle: c.handle,
+    }));
 
   return (
     <div className="bg-[var(--color-stone)] min-h-screen pt-20">
