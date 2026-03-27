@@ -15,7 +15,7 @@ export default function CartDrawer() {
         onClick={closeCart}
       />
       <div className="absolute inset-y-0 right-0 flex max-w-full sm:pl-10">
-        <div className="w-screen max-w-md pointer-events-auto transform transition-transform bg-[var(--color-stone)] border-l border-[var(--color-muted)]/20 shadow-2xl flex flex-col h-full">
+        <div className="w-screen max-w-full sm:max-w-md pointer-events-auto transform transition-transform bg-[var(--color-stone)] border-l border-[var(--color-muted)]/20 shadow-2xl flex flex-col h-full">
           
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-6 border-b border-[var(--color-muted)]/20">

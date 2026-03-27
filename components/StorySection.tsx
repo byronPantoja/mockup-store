@@ -26,8 +26,8 @@ export default function StorySection() {
               We focus on building peace in Mindanao through agriculture. By partnering directly with indigenous farming communities, introducing modern sustainable practices, and returning a genuine premium to the origin, we secure better futures—and better coffee.
             </p>
             <div>
-              <Link 
-                href="#"
+              <Link
+                href="/about"
                 className="font-sans text-sm md:text-base uppercase tracking-[0.2em] font-medium pb-2 border-b border-white hover:text-[var(--color-stone)] hover:border-[var(--color-stone)] transition-colors"
               >
                 Learn About Our Impact &rarr;

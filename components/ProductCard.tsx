@@ -12,7 +12,7 @@ export default function ProductCard({
   };
 }) {
   return (
-    <Link href={`/products/${product.handle}`} className="group block w-full max-w-sm">
+    <Link href={`/products/${product.handle}`} className="group block w-full">
       <div className="relative aspect-square w-full overflow-hidden bg-[var(--color-stone)] border border-[var(--color-charcoal)]/5">
         {product.image ? (
           <Image

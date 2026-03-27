@@ -1,8 +1,13 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import CartIcon from "./CartIcon";
 import CartDrawer from "./CartDrawer";
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <>
       <header className="sticky top-0 z-40 bg-[var(--color-stone)] border-b border-[var(--color-charcoal)]/10 font-sans">
@@ -28,13 +33,13 @@ export default function Navbar() {
                   Shop
                 </Link>
                 <Link
-                  href="#"
+                  href="/about"
                   className="text-[var(--color-charcoal)] hover:text-[var(--color-terracotta)] font-medium text-sm uppercase tracking-widest transition-colors"
                 >
                   About
                 </Link>
                 <Link
-                  href="#"
+                  href="/journal"
                   className="text-[var(--color-charcoal)] hover:text-[var(--color-terracotta)] font-medium text-sm uppercase tracking-widest transition-colors"
                 >
                   Journal
@@ -44,9 +49,53 @@ export default function Navbar() {
               <div className="flex items-center border-l border-[var(--color-charcoal)]/10 pl-8 ml-8">
                 <CartIcon />
               </div>
+
+              {/* Hamburger menu button — mobile only */}
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="md:hidden p-2 -m-2"
+                aria-label="Toggle menu"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                  {menuOpen ? (
+                    <path strokeLinecap="square" strokeLinejoin="miter" d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="square" strokeLinejoin="miter" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+                  )}
+                </svg>
+              </button>
             </div>
           </div>
         </div>
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <nav className="md:hidden border-t border-[var(--color-charcoal)]/10 bg-[var(--color-stone)]">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col space-y-4">
+              <Link
+                href="/shop"
+                onClick={() => setMenuOpen(false)}
+                className="text-[var(--color-charcoal)] hover:text-[var(--color-terracotta)] font-medium text-sm uppercase tracking-widest transition-colors"
+              >
+                Shop
+              </Link>
+              <Link
+                href="/about"
+                onClick={() => setMenuOpen(false)}
+                className="text-[var(--color-charcoal)] hover:text-[var(--color-terracotta)] font-medium text-sm uppercase tracking-widest transition-colors"
+              >
+                About
+              </Link>
+              <Link
+                href="/journal"
+                onClick={() => setMenuOpen(false)}
+                className="text-[var(--color-charcoal)] hover:text-[var(--color-terracotta)] font-medium text-sm uppercase tracking-widest transition-colors"
+              >
+                Journal
+              </Link>
+            </div>
+          </nav>
+        )}
       </header>
       <CartDrawer />
     </>
