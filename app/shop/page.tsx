@@ -3,7 +3,7 @@ import ProductCard from "../../components/ProductCard";
 import NewsletterFooter from "../../components/NewsletterFooter";
 import CategoryFilter from "../../components/CategoryFilter";
 
-export const revalidate = 3600;
+export const revalidate = 0;
 
 export default async function ShopPage({
   searchParams,

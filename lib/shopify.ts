@@ -26,8 +26,8 @@ export async function shopifyFetch<T>({
         ...(query && { query }),
         ...(variables && { variables }),
       }),
-      // Cache products for 1 hour for high performance, but allow revalidation
-      next: { revalidate: 3600 },
+      // Set caching to 0 for instant reflection of Shopify updates during development
+      next: { revalidate: 0 },
     });
 
     const body = await result.json();

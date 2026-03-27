@@ -3,7 +3,7 @@ import ProductDetail from "../../../components/ProductDetail";
 import NewsletterFooter from "../../../components/NewsletterFooter";
 import { notFound } from "next/navigation";
 
-export const revalidate = 3600;
+export const revalidate = 0;
 
 export default async function ProductPage({
   params,

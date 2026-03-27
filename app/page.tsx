@@ -9,7 +9,7 @@ import StorySection from "../components/StorySection";
 import NewsletterFooter from "../components/NewsletterFooter";
 import { getCollections, getAllProducts } from "../lib/shopify";
 
-export const revalidate = 3600;
+export const revalidate = 0;
 
 export default async function Home() {
   const collectionsPromise = getCollections();
