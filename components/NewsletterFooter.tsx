@@ -30,16 +30,16 @@ export default function NewsletterFooter() {
               <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--color-muted)] mb-6">Explore</h3>
               <ul className="space-y-4">
                 <li><a href="/shop" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Shop</a></li>
-                <li><a href="#" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">About</a></li>
-                <li><a href="#" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Journal</a></li>
+                <li><a href="/about" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">About</a></li>
+                <li><a href="/journal" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Journal</a></li>
               </ul>
             </div>
             <div>
               <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--color-muted)] mb-6">Help</h3>
               <ul className="space-y-4">
-                <li><a href="#" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Shipping</a></li>
-                <li><a href="#" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Contact</a></li>
-                <li><a href="#" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Instagram</a></li>
+                <li><a href="/shipping" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Shipping</a></li>
+                <li><a href="/about" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Contact</a></li>
+                <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Instagram</a></li>
               </ul>
             </div>
           </div>

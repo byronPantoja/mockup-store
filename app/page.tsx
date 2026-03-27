@@ -20,12 +20,15 @@ export default async function Home() {
     productsPromise,
   ]);
 
-  // Transform Collection Data
-  const collections = shopifyCollections.map((col: any) => ({
-    title: col.title,
-    handle: col.handle,
-    image: col.image?.url || "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1600&auto=format&fit=crop",
-  })).slice(0, 3); // Get top 3 collections
+  // Transform Collection Data — exclude Shopify's default "frontpage" collection
+  const collections = shopifyCollections
+    .filter((col: any) => col.handle !== "frontpage")
+    .map((col: any) => ({
+      title: col.title,
+      handle: col.handle,
+      image: col.image?.url || "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1600&auto=format&fit=crop",
+    }))
+    .slice(0, 3);
 
   // Transform Bestseller Data
   const bestsellers = shopifyProducts.slice(0, 6).map((prod: any) => ({
@@ -44,9 +47,9 @@ export default async function Home() {
       <Hero imageUrl={heroImage} />
       <CollectionGrid collections={collections} />
       <ShopByLine />
-      <FeaturedBanner 
-        title={collections[0]?.title || "The Mindanao Collection"} 
-        href={`/shop?collection=${collections[0]?.handle || ""}`}
+      <FeaturedBanner
+        title="The Mindanao Collection"
+        href="/shop?collection=coffee-beans"
       />
       <BestsellersRow products={bestsellers} />
       <PressRow />
