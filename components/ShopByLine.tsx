@@ -5,9 +5,9 @@ export default function ShopByLine() {
   return (
     <section className="bg-[var(--color-oxblood)] text-[var(--color-stone)] py-20 md:py-32 w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-16">
-          
-          <div className="md:w-1/2 space-y-10">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-16">
+
+          <div className="md:w-1/2 space-y-10 relative z-10">
             <h2 className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-stone)]/70">
               Shop by Line
             </h2>
