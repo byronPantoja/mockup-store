@@ -48,7 +48,7 @@ export default async function ShopPage({
         {/* Header and Filters */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-[var(--color-charcoal)] pb-12">
           <h1 className="font-serif text-[var(--color-charcoal)] text-5xl md:text-7xl lg:text-[7rem] lowercase tracking-tighter leading-none mb-8 md:mb-0">
-            {selectedCollection ? selectedCollection.replace("-", " ") : "all products"}
+            {selectedCollection ? selectedCollection.replace(/-/g, " ") : "all products"}
           </h1>
           
           <CategoryFilter 

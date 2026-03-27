@@ -6,17 +6,29 @@ import Image from "next/image";
 export default function CartDrawer() {
   const { state, closeCart, updateQuantity, removeItem, cartTotal } = useCart();
 
-  if (!state.isOpen) return null;
-
+  // Always rendered so CSS transitions can fire.
+  // pointer-events-none on the root when closed prevents blocking page interactions.
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden">
-      <div 
-        className="absolute inset-0 bg-black/60 transition-opacity" 
+    <div
+      className={`fixed inset-0 z-50 overflow-hidden ${
+        state.isOpen ? "pointer-events-auto" : "pointer-events-none"
+      }`}
+    >
+      {/* Backdrop */}
+      <div
+        className={`absolute inset-0 bg-black/60 transition-opacity duration-300 ${
+          state.isOpen ? "opacity-100" : "opacity-0"
+        }`}
         onClick={closeCart}
       />
+
+      {/* Drawer panel */}
       <div className="absolute inset-y-0 right-0 flex max-w-full sm:pl-10">
-        <div className="w-screen max-w-full sm:max-w-md pointer-events-auto transform transition-transform bg-[var(--color-stone)] border-l border-[var(--color-muted)]/20 shadow-2xl flex flex-col h-full">
-          
+        <div
+          className={`w-screen max-w-full sm:max-w-md pointer-events-auto transform transition-transform duration-300 ease-in-out bg-[var(--color-stone)] border-l border-[var(--color-muted)]/20 shadow-2xl flex flex-col h-full ${
+            state.isOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-6 border-b border-[var(--color-muted)]/20">
             <h2 className="text-3xl font-serif text-[var(--color-charcoal)] tracking-tight">Your Cart</h2>
@@ -59,7 +71,7 @@ export default function CartDrawer() {
                       </div>
                       <div className="flex items-end justify-between text-sm mt-4">
                         <div className="flex items-center border border-[var(--color-charcoal)]/20">
-                          <button 
+                          <button
                             className="px-3 py-1 hover:bg-[var(--color-charcoal)] hover:text-white transition-colors"
                             onClick={() => {
                               if (item.quantity > 1) updateQuantity(item.id, item.quantity - 1);
@@ -71,7 +83,7 @@ export default function CartDrawer() {
                           <span className="px-3 border-x border-[var(--color-charcoal)]/20 tabular-nums">
                             {item.quantity}
                           </span>
-                          <button 
+                          <button
                             className="px-3 py-1 hover:bg-[var(--color-charcoal)] hover:text-white transition-colors"
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
                           >

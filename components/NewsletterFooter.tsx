@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function NewsletterFooter() {
   return (
     <footer className="bg-[var(--color-stone)] border-t border-[var(--color-charcoal)]/10">
@@ -29,16 +31,16 @@ export default function NewsletterFooter() {
             <div>
               <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--color-muted)] mb-6">Explore</h3>
               <ul className="space-y-4">
-                <li><a href="/shop" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Shop</a></li>
-                <li><a href="/about" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">About</a></li>
-                <li><a href="/journal" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Journal</a></li>
+                <li><Link href="/shop" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Shop</Link></li>
+                <li><Link href="/about" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">About</Link></li>
+                <li><Link href="/journal" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Journal</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--color-muted)] mb-6">Help</h3>
               <ul className="space-y-4">
-                <li><a href="/shipping" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Shipping</a></li>
-                <li><a href="/about" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Contact</a></li>
+                <li><Link href="/shipping" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Shipping</Link></li>
+                <li><Link href="/about" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Contact</Link></li>
                 <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-[var(--color-terracotta)] transition-colors">Instagram</a></li>
               </ul>
             </div>

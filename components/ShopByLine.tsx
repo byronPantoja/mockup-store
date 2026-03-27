@@ -8,7 +8,7 @@ export default function ShopByLine() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-16">
           
           <div className="md:w-1/2 space-y-10">
-            <h2 className="font-sans text-sm md:text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-stone)]/70">
+            <h2 className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-stone)]/70">
               Shop by Line
             </h2>
             

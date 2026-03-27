@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import DOMPurify from "dompurify";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "../lib/cart-context";
@@ -115,9 +116,18 @@ export default function ProductDetail({ product }: { product: any }) {
               {selectedVariant?.availableForSale ? "Add to Cart" : "Out of Stock"}
             </button>
 
-            <div 
+            <div
+              // suppressHydrationWarning: DOMPurify requires window (browser only).
+              // During SSR the raw HTML is rendered; on the client DOMPurify sanitizes
+              // it. React would otherwise warn about the mismatch.
+              suppressHydrationWarning
               className="prose prose-[var(--color-charcoal)] max-w-none font-sans font-light leading-relaxed prose-p:text-[var(--color-charcoal)]/80 prose-p:mb-6 mt-8 border-t border-[var(--color-charcoal)]/10 pt-12"
-              dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+              dangerouslySetInnerHTML={{
+                __html:
+                  typeof window !== "undefined"
+                    ? DOMPurify.sanitize(product.descriptionHtml ?? "")
+                    : (product.descriptionHtml ?? ""),
+              }}
             />
             
           </div>

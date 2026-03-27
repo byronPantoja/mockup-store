@@ -6,7 +6,7 @@ export async function shopifyFetch<T>({
   variables?: Record<string, unknown>;
 }): Promise<{ status: number; body: T } | never> {
   const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN;
-  const storefrontToken = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN;
+  const storefrontToken = process.env.SHOPIFY_STOREFRONT_TOKEN;
 
   if (!domain || !storefrontToken) {
     console.warn("Shopify environment variables not set. Returning empty data.");
@@ -33,7 +33,10 @@ export async function shopifyFetch<T>({
     const body = await result.json();
 
     if (body.errors) {
-      console.error("Shopify API Errors:", body.errors);
+      console.error("[shopify] GraphQL error", {
+        errorCount: body.errors.length,
+        message: body.errors[0]?.message ?? "Unknown GraphQL error",
+      });
       throw body.errors[0];
     }
 
@@ -42,7 +45,9 @@ export async function shopifyFetch<T>({
       body,
     };
   } catch (error) {
-    console.error("Error fetching from Shopify", error);
+    console.error("[shopify] Fetch failed", {
+      message: error instanceof Error ? error.message : "Unknown error",
+    });
     // Return empty data instead of breaking build
     return { status: 500, body: {} as T };
   }

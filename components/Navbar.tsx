@@ -1,12 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import CartIcon from "./CartIcon";
 import CartDrawer from "./CartDrawer";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   return (
     <>
@@ -46,7 +52,7 @@ export default function Navbar() {
                 </Link>
               </nav>
 
-              <div className="flex items-center border-l border-[var(--color-charcoal)]/10 pl-8 ml-8">
+              <div className="flex items-center md:border-l md:border-[var(--color-charcoal)]/10 md:pl-8 md:ml-8">
                 <CartIcon />
               </div>
 

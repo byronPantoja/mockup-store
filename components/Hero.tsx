@@ -49,12 +49,15 @@ export default function Hero({ imageUrl }: { imageUrl: string }) {
         <div className="mt-8 md:mt-12 max-w-2xl">
           <p className="font-serif italic text-xl md:text-2xl leading-snug text-[var(--color-charcoal)]">
             Your coffee should look as good as it tastes.{" "}
-            <span className="underline decoration-1 underline-offset-4">Our vision</span>{" "}
+            <Link href="/about" className="underline decoration-1 underline-offset-4 hover:text-[var(--color-terracotta)] transition-colors">Our vision</Link>{" "}
             is to bring renewed quality and soul to specialty roasting, creating products that honor the origin and the craft behind every cup.
           </p>
-          <p className="mt-4 font-sans text-sm text-[var(--color-muted)]">
+          <Link
+            href="/about"
+            className="mt-4 font-sans text-sm text-[var(--color-muted)] hover:text-[var(--color-terracotta)] transition-colors inline-block"
+          >
             Learn more
-          </p>
+          </Link>
         </div>
 
       </div>
