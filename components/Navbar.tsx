@@ -1,0 +1,54 @@
+import Link from "next/link";
+import CartIcon from "./CartIcon";
+import CartDrawer from "./CartDrawer";
+
+export default function Navbar() {
+  return (
+    <>
+      <header className="sticky top-0 z-40 bg-[var(--color-stone)] border-b border-[var(--color-charcoal)]/10 font-sans">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            {/* Logo */}
+            <div className="flex-shrink-0 flex items-center">
+              <Link
+                href="/"
+                className="font-serif text-[var(--color-terracotta)] text-3xl md:text-4xl tracking-tight leading-none hover:opacity-80 transition-opacity"
+              >
+                That&apos;s G
+              </Link>
+            </div>
+
+            {/* Navigation and Actions */}
+            <div className="flex items-center space-x-8">
+              <nav className="hidden md:flex space-x-8">
+                <Link
+                  href="/shop"
+                  className="text-[var(--color-charcoal)] hover:text-[var(--color-terracotta)] font-medium text-sm uppercase tracking-widest transition-colors"
+                >
+                  Shop
+                </Link>
+                <Link
+                  href="#"
+                  className="text-[var(--color-charcoal)] hover:text-[var(--color-terracotta)] font-medium text-sm uppercase tracking-widest transition-colors"
+                >
+                  About
+                </Link>
+                <Link
+                  href="#"
+                  className="text-[var(--color-charcoal)] hover:text-[var(--color-terracotta)] font-medium text-sm uppercase tracking-widest transition-colors"
+                >
+                  Journal
+                </Link>
+              </nav>
+
+              <div className="flex items-center border-l border-[var(--color-charcoal)]/10 pl-8 ml-8">
+                <CartIcon />
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <CartDrawer />
+    </>
+  );
+}
