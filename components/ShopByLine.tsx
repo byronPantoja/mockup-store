@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function ShopByLine() {
   return (
     <section className="bg-[var(--color-oxblood)] text-[var(--color-stone)] py-20 md:py-32 w-full overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-16">
 
           <div className="md:w-1/2 space-y-10 relative z-10">
