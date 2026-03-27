@@ -5,9 +5,9 @@ export default function ShopByLine() {
   return (
     <section className="bg-[var(--color-oxblood)] text-[var(--color-stone)] py-20 md:py-32 w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-16">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 lg:gap-16">
 
-          <div className="md:w-1/2 space-y-10 relative z-10">
+          <div className="w-full md:w-1/2 space-y-10 relative z-10">
             <h2 className="font-sans text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-stone)]/70">
               Shop by Line
             </h2>
@@ -20,7 +20,7 @@ export default function ShopByLine() {
               <span>gifts</span>
             </div>
             
-            <p className="font-sans text-lg md:text-xl font-light text-[var(--color-stone)]/90 max-w-md leading-relaxed">
+            <p className="font-sans text-lg md:text-xl font-light text-[var(--color-stone)]/90 leading-relaxed">
               We separate our roasts into distinct lines to help you identify the perfect cup. From everyday staples to rare microlots, every bean tells the story of its origin.
             </p>
             
