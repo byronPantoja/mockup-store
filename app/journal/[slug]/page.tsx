@@ -1,11 +1,13 @@
-import { articles, getArticleBySlug } from "../../../lib/journal";
+import { getAllArticles, getArticleBySlug } from "../../../lib/journal";
 import Image from "next/image";
 import Link from "next/link";
 import NewsletterFooter from "../../../components/NewsletterFooter";
 import { notFound } from "next/navigation";
+import { MDXRemote } from "next-mdx-remote/rsc";
 
 // For static generation
 export function generateStaticParams() {
+  const articles = getAllArticles();
   return articles.map((article) => ({
     slug: article.slug,
   }));
@@ -19,7 +21,7 @@ export default async function ArticlePage({
   const p = await params;
   const article = getArticleBySlug(p.slug);
 
-  if (!article) {
+  if (!article || !article.content) {
     notFound();
   }
 
@@ -75,8 +77,9 @@ export default async function ArticlePage({
           prose-blockquote:font-serif prose-blockquote:text-3xl prose-blockquote:md:text-4xl prose-blockquote:leading-snug prose-blockquote:my-16 prose-blockquote:border-l-4 prose-blockquote:border-[var(--color-terracotta)] prose-blockquote:pl-8 prose-blockquote:italic prose-blockquote:text-[var(--color-charcoal)]
           prose-li:text-[var(--color-charcoal)]/90
           prose-strong:font-bold prose-strong:text-[var(--color-charcoal)]"
-          dangerouslySetInnerHTML={{ __html: article.content }}
-        />
+        >
+          <MDXRemote source={article.content} />
+        </article>
         
         <div className="mt-24 pt-12 border-t border-[var(--color-charcoal)]/10 text-center">
           <Link 
@@ -90,7 +93,7 @@ export default async function ArticlePage({
 
       <NewsletterFooter />
       
-      {/* Required for the bespoke typography formatting in the HTML string */}
+      {/* Optional style injection if need be, but prose manages most things */}
       <style dangerouslySetInnerHTML={{__html: `
         .prose h2 { color: var(--color-charcoal); }
         .prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 2rem; }

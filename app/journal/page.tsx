@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { articles } from "../../lib/journal";
+import { getAllArticles, Article } from "../../lib/journal";
 import NewsletterFooter from "../../components/NewsletterFooter";
 
 export default function JournalPage() {
+  const articles = getAllArticles();
   const featuredArticle = articles[0];
   const otherArticles = articles.slice(1);
 
